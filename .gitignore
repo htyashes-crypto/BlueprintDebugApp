@@ -9,3 +9,6 @@ Thumbs.db
 *.log
 .env
 .env.*
+
+# electron-icon-builder intermediate output (final icons live at resources/icon.{ico,icns,png})
+resources/icons/
