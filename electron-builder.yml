@@ -7,7 +7,8 @@ files:
   - out/**/*
   - package.json
   - "!**/*.{md,map,ts}"
-  - "!node_modules/**/*"
+  # 不要写 "!node_modules/**/*" —— electron-builder 默认会把 production dependencies
+  # 自动打进 app.asar；显式排除 node_modules 会让运行时 require('electron-updater') 失败
 
 win:
   target:
@@ -15,7 +16,6 @@ win:
       arch: [x64]
     - target: portable
       arch: [x64]
-  artifactName: BlueprintDebug-${version}-${arch}.${ext}
 
 nsis:
   oneClick: false
@@ -25,6 +25,10 @@ nsis:
   uninstallDisplayName: BlueprintDebug ${version}
   createDesktopShortcut: true
   createStartMenuShortcut: true
+  artifactName: BlueprintDebug-Setup-${version}-${arch}.${ext}
+
+portable:
+  artifactName: BlueprintDebug-Portable-${version}-${arch}.${ext}
 
 mac:
   target:
