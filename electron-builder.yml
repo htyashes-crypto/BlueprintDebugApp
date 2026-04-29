@@ -1,0 +1,51 @@
+appId: com.actframework.blueprint-debug-app
+productName: BlueprintDebug
+directories:
+  buildResources: resources
+  output: dist
+files:
+  - out/**/*
+  - package.json
+  - "!**/*.{md,map,ts}"
+  - "!node_modules/**/*"
+
+win:
+  target:
+    - target: nsis
+      arch: [x64]
+    - target: portable
+      arch: [x64]
+  artifactName: BlueprintDebug-${version}-${arch}.${ext}
+
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  shortcutName: BlueprintDebug
+  uninstallDisplayName: BlueprintDebug ${version}
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+
+mac:
+  target:
+    - target: dmg
+      arch: [arm64, x64]
+  category: public.app-category.developer-tools
+  artifactName: BlueprintDebug-${version}-${arch}.${ext}
+
+dmg:
+  title: BlueprintDebug ${version}
+  contents:
+    - x: 130
+      y: 220
+    - x: 410
+      y: 220
+      type: link
+      path: /Applications
+
+# Phase 6 — GitHub 自动更新；token 通过本地 GH_TOKEN 环境变量提供，绝不进文件
+publish:
+  provider: github
+  owner: htyashes-crypto
+  repo: BlueprintDebugApp
+  releaseType: release

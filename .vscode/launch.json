@@ -1,0 +1,44 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "BlueprintDebug: Dev (main + renderer)",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"],
+      "presentation": {
+        "group": "1_run",
+        "order": 1
+      }
+    },
+    {
+      "name": "BlueprintDebug: Build & Preview",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "preview"],
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"],
+      "presentation": {
+        "group": "2_build",
+        "order": 1
+      }
+    },
+    {
+      "name": "BlueprintDebug: Attach Renderer (DevTools)",
+      "type": "chrome",
+      "request": "attach",
+      "port": 9222,
+      "webRoot": "${workspaceFolder}/src/renderer/src",
+      "presentation": {
+        "group": "3_debug",
+        "order": 1
+      }
+    }
+  ]
+}

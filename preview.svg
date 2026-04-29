@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1220 820" width="1220" height="820">
+  <style>
+    text { font-family: 'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif; }
+    .mono { font-family: 'Consolas','JetBrains Mono','SF Mono',monospace; }
+  </style>
+
+  <!-- 整体阴影 -->
+  <defs>
+    <filter id="winShadow" x="-2%" y="-2%" width="104%" height="106%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+      <feOffset dy="4" result="off"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.5"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <linearGradient id="topGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#323233"/>
+      <stop offset="100%" stop-color="#2d2d2d"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 画布背景 -->
+  <rect width="1220" height="820" fill="#101012"/>
+
+  <!-- 窗口主体（圆角 + 阴影） -->
+  <g filter="url(#winShadow)">
+    <rect x="10" y="10" width="1200" height="800" rx="10" fill="#1e1e1e"/>
+  </g>
+
+  <!-- ========== macOS 风格标题栏 ========== -->
+  <path d="M10 20 L10 42 L1210 42 L1210 20 Q1210 10 1200 10 L20 10 Q10 10 10 20 Z" fill="#252526"/>
+  <line x1="10" y1="42" x2="1210" y2="42" stroke="#3e3e3e"/>
+  <circle cx="32" cy="26" r="6" fill="#ff5f57" stroke="#e0443e" stroke-width="0.5"/>
+  <circle cx="52" cy="26" r="6" fill="#febc2e" stroke="#dea123" stroke-width="0.5"/>
+  <circle cx="72" cy="26" r="6" fill="#28c840" stroke="#1aab29" stroke-width="0.5"/>
+  <text x="610" y="30" fill="#aaa" font-size="12" text-anchor="middle">蓝图调试 BlueprintDebug — Func_OnDiceRolled (live)</text>
+
+  <!-- ========== 应用顶栏 ========== -->
+  <rect x="10" y="42" width="1200" height="56" fill="url(#topGrad)"/>
+  <line x1="10" y1="98" x2="1210" y2="98" stroke="#3e3e3e"/>
+
+  <!-- 应用图标 + 标题 -->
+  <rect x="26" y="58" width="24" height="24" rx="5" fill="#0098ff"/>
+  <text x="32.5" y="76" fill="#fff" font-size="14" font-weight="700">B</text>
+  <text x="58" y="77" fill="#cccccc" font-size="14" font-weight="600">BlueprintDebug</text>
+
+  <!-- 连接状态 -->
+  <circle cx="190" cy="70" r="5" fill="#4ec9b0">
+    <animate attributeName="opacity" values="1;0.4;1" dur="1.6s" repeatCount="indefinite"/>
+  </circle>
+  <text x="202" y="75" fill="#cccccc" font-size="13">已连接</text>
+
+  <!-- Host:Port 输入 -->
+  <rect x="256" y="56" width="180" height="28" rx="4" fill="#3c3c3c" stroke="#555"/>
+  <text x="266" y="75" class="mono" fill="#cccccc" font-size="12">127.0.0.1:17900</text>
+
+  <!-- Token 输入 -->
+  <rect x="446" y="56" width="200" height="28" rx="4" fill="#3c3c3c" stroke="#555"/>
+  <text x="456" y="75" class="mono" fill="#888" font-size="12">●●●●●●●●●●●●●●●● token</text>
+
+  <!-- 断开按钮 -->
+  <rect x="656" y="56" width="80" height="28" rx="4" fill="#a1260d"/>
+  <text x="681" y="75" fill="#fff" font-size="13" font-weight="500">断开</text>
+
+  <!-- 打开 Dump 按钮 -->
+  <rect x="746" y="56" width="120" height="28" rx="4" fill="#3c3c3c" stroke="#555"/>
+  <text x="762" y="75" fill="#cccccc" font-size="13">📂 打开 Dump</text>
+
+  <!-- 历史面板切换（右侧）-->
+  <rect x="1080" y="56" width="110" height="28" rx="4" fill="#094771" stroke="#0098ff"/>
+  <text x="1098" y="75" fill="#fff" font-size="13">历史面板 ▾</text>
+
+  <!-- ========== 左栏：历史面板 ========== -->
+  <rect x="10" y="98" width="280" height="688" fill="#252525"/>
+  <line x1="290" y1="98" x2="290" y2="786" stroke="#3e3e3e"/>
+
+  <!-- 标题 -->
+  <text x="26" y="126" fill="#cccccc" font-size="13" font-weight="600">历史记录 (6/50)</text>
+
+  <!-- 搜索框 -->
+  <rect x="22" y="138" width="256" height="28" rx="4" fill="#3c3c3c" stroke="#555"/>
+  <text x="32" y="157" fill="#888" font-size="12">🔍 搜索历史项...</text>
+
+  <!-- 实时数据按钮（选中态）-->
+  <rect x="22" y="176" width="256" height="46" rx="6" fill="#094771" stroke="#0098ff" stroke-width="1.5"/>
+  <text x="32" y="198" fill="#fff" font-size="13" font-weight="600">▶ 实时数据</text>
+  <text x="32" y="214" fill="#9cdcfe" font-size="11">3 个根上下文 · 21 行日志</text>
+
+  <line x1="22" y1="236" x2="278" y2="236" stroke="#3e3e3e"/>
+
+  <!-- 历史项 1 -->
+  <rect x="22" y="246" width="256" height="46" rx="6" fill="#2d2d2d" stroke="#3e3e3e"/>
+  <text x="32" y="266" class="mono" fill="#9cdcfe" font-size="11">[5] 14:23:18</text>
+  <text x="32" y="282" fill="#cccccc" font-size="12">Func_OnDiceRolled</text>
+
+  <!-- 历史项 2 -->
+  <rect x="22" y="300" width="256" height="46" rx="6" fill="#2d2d2d" stroke="#3e3e3e"/>
+  <text x="32" y="320" class="mono" fill="#9cdcfe" font-size="11">[4] 14:23:15</text>
+  <text x="32" y="336" fill="#cccccc" font-size="12">Event_TurnStart</text>
+
+  <!-- 历史项 3 -->
+  <rect x="22" y="354" width="256" height="46" rx="6" fill="#2d2d2d" stroke="#3e3e3e"/>
+  <text x="32" y="374" class="mono" fill="#9cdcfe" font-size="11">[3] 14:23:11</text>
+  <text x="32" y="390" fill="#cccccc" font-size="12">Func_PlayerMove</text>
+
+  <!-- 历史项 4 -->
+  <rect x="22" y="408" width="256" height="46" rx="6" fill="#2d2d2d" stroke="#3e3e3e"/>
+  <text x="32" y="428" class="mono" fill="#9cdcfe" font-size="11">[2] 14:23:08</text>
+  <text x="32" y="444" fill="#cccccc" font-size="12">Func_RollDice</text>
+
+  <!-- 历史项 5 -->
+  <rect x="22" y="462" width="256" height="46" rx="6" fill="#2d2d2d" stroke="#3e3e3e"/>
+  <text x="32" y="482" class="mono" fill="#9cdcfe" font-size="11">[1] 14:23:05</text>
+  <text x="32" y="498" fill="#cccccc" font-size="12">Event_GameStart</text>
+
+  <!-- 历史项 6 -->
+  <rect x="22" y="516" width="256" height="46" rx="6" fill="#2d2d2d" stroke="#3e3e3e"/>
+  <text x="32" y="536" class="mono" fill="#9cdcfe" font-size="11">[0] 14:23:00</text>
+  <text x="32" y="552" fill="#cccccc" font-size="12">Func_BlueprintAwake</text>
+
+  <!-- ========== 右栏顶部工具条 ========== -->
+  <rect x="290" y="98" width="920" height="48" fill="#252525"/>
+  <line x1="290" y1="146" x2="1210" y2="146" stroke="#3e3e3e"/>
+
+  <rect x="306" y="110" width="280" height="28" rx="4" fill="#3c3c3c" stroke="#555"/>
+  <text x="316" y="129" fill="#cccccc" font-size="13">🔍 Move</text>
+  <rect x="562" y="116" width="14" height="14" rx="3" fill="#555"/>
+  <text x="566" y="127" fill="#fff" font-size="10">×</text>
+
+  <rect x="596" y="110" width="120" height="28" rx="4" fill="#3c3c3c" stroke="#555"/>
+  <text x="606" y="129" fill="#cccccc" font-size="13">名称+日志 ▾</text>
+
+  <rect x="726" y="110" width="60" height="28" rx="4" fill="#3c3c3c" stroke="#555"/>
+  <text x="742" y="129" fill="#cccccc" font-size="12">清空</text>
+
+  <rect x="796" y="110" width="80" height="28" rx="4" fill="#3c3c3c" stroke="#555"/>
+  <text x="810" y="129" fill="#cccccc" font-size="12">⟳ 刷新</text>
+
+  <text x="890" y="129" fill="#888" font-size="12">当前查看：</text>
+  <text x="962" y="129" fill="#9cdcfe" font-size="12" font-weight="500">实时数据</text>
+
+  <!-- ========== 右栏内容：树形日志 ========== -->
+
+  <!-- 根卡片 Func_OnDiceRolled (展开态) -->
+  <rect x="306" y="162" width="888" height="40" rx="6" fill="#2d2d2d" stroke="#3e3e3e"/>
+  <rect x="314" y="170" width="50" height="24" rx="3" fill="#3c3c3c" stroke="#555"/>
+  <text x="326" y="186" fill="#cccccc" font-size="11">收纳</text>
+  <text x="374" y="186" fill="#cccccc" font-size="14" font-weight="600">Func_On<tspan fill="#ffd700" font-weight="700">Dice</tspan>Rolled</text>
+  <text x="900" y="186" fill="#888" font-size="11">总日志 12 | 子调用 4</text>
+  <rect x="1028" y="170" width="60" height="24" rx="3" fill="#3c3c3c" stroke="#555"/>
+  <text x="1042" y="186" fill="#cccccc" font-size="11">📋 复制</text>
+  <rect x="1094" y="170" width="100" height="24" rx="3" fill="#3c3c3c" stroke="#555"/>
+  <text x="1105" y="186" fill="#cccccc" font-size="11">📋 带子级复制</text>
+
+  <text x="322" y="226" class="mono" fill="#cccccc" font-size="12">[Interpreter] BeginCheck Func_OnDiceRolled, args: dice=4</text>
+  <text x="322" y="244" class="mono" fill="#cccccc" font-size="12">[Interpreter] node Branch executed, branch=true (dice &gt; 0)</text>
+
+  <!-- 子卡片 1: CallTagFunction MovePlayer (折叠态) -->
+  <rect x="330" y="258" width="864" height="40" rx="6" fill="#2d2d2d" stroke="#3e3e3e"/>
+  <rect x="338" y="266" width="50" height="24" rx="3" fill="#3c3c3c" stroke="#555"/>
+  <text x="350" y="282" fill="#cccccc" font-size="11">展开</text>
+  <text x="398" y="282" fill="#cccccc" font-size="14" font-weight="600">CallTagFunction <tspan fill="#ffd700" font-weight="700">Move</tspan>Player</text>
+  <text x="924" y="282" fill="#888" font-size="11">总日志 5 | 子调用 1</text>
+  <rect x="1028" y="266" width="60" height="24" rx="3" fill="#3c3c3c" stroke="#555"/>
+  <text x="1042" y="282" fill="#cccccc" font-size="11">📋 复制</text>
+  <rect x="1094" y="266" width="100" height="24" rx="3" fill="#3c3c3c" stroke="#555"/>
+  <text x="1105" y="282" fill="#cccccc" font-size="11">📋 带子级复制</text>
+  <text x="346" y="318" class="mono" fill="#888" font-size="11" font-style="italic">[Interpreter] tag function MovePlayer entered with args=[player1, 4 steps]</text>
+
+  <!-- 子卡片 2: UpdateDisplay BgDicePanel (展开态) -->
+  <rect x="330" y="336" width="864" height="40" rx="6" fill="#2d2d2d" stroke="#3e3e3e"/>
+  <rect x="338" y="344" width="50" height="24" rx="3" fill="#3c3c3c" stroke="#555"/>
+  <text x="350" y="360" fill="#cccccc" font-size="11">收纳</text>
+  <text x="398" y="360" fill="#cccccc" font-size="14" font-weight="600">UpdateDisplay BgDicePanel</text>
+  <text x="924" y="360" fill="#888" font-size="11">总日志 3 | 子调用 0</text>
+  <text x="346" y="396" class="mono" fill="#cccccc" font-size="12">[Interpreter] MarkDisplayDataDirty BgDicePanel.diceValue=4</text>
+  <text x="346" y="414" class="mono" fill="#cccccc" font-size="12">[Interpreter] EmitEvent OnDicePanelRefreshed (3 listeners)</text>
+  <text x="346" y="432" class="mono" fill="#cccccc" font-size="12">[Interpreter] node Sequence completed (2/2 branches)</text>
+
+  <!-- 子卡片 3: SendGlobalEvent OnTurnEnd (折叠态) -->
+  <rect x="330" y="446" width="864" height="40" rx="6" fill="#2d2d2d" stroke="#3e3e3e"/>
+  <rect x="338" y="454" width="50" height="24" rx="3" fill="#3c3c3c" stroke="#555"/>
+  <text x="350" y="470" fill="#cccccc" font-size="11">展开</text>
+  <text x="398" y="470" fill="#cccccc" font-size="14" font-weight="600">SendGlobalEvent <tspan fill="#ffd700" font-weight="700">OnTurn</tspan>End</text>
+  <text x="924" y="470" fill="#888" font-size="11">总日志 2 | 子调用 0</text>
+  <text x="346" y="506" class="mono" fill="#888" font-size="11" font-style="italic">[Interpreter] global event OnTurnEnd dispatched to 4 listeners</text>
+
+  <!-- 主层尾部日志 -->
+  <text x="322" y="540" class="mono" fill="#cccccc" font-size="12">[Interpreter] node EndCheck completed, total 12.4ms</text>
+  <text x="322" y="558" class="mono" fill="#4ec9b0" font-size="12">[Interpreter] ⏵ live: receiving log-added... (实时增量)</text>
+  <text x="322" y="582" fill="#888" font-size="11" font-style="italic">… 4 行更多日志（点 收纳/展开 切换）</text>
+
+  <!-- 浮窗示例（角标）-->
+  <g>
+    <polygon points="894,712 902,706 902,718" fill="#383838" stroke="#666"/>
+    <rect x="900" y="690" width="280" height="76" rx="4" fill="#383838" stroke="#666"/>
+    <text x="912" y="708" fill="#9cdcfe" font-size="11" font-weight="600">悬停浮窗示例（长名字截断时）</text>
+    <text x="912" y="726" class="mono" fill="#cccccc" font-size="11">Func_HandleVeryLongClassName</text>
+    <text x="912" y="742" class="mono" fill="#cccccc" font-size="11">_OnExtendedDiceRolledEvent</text>
+    <text x="912" y="758" class="mono" fill="#cccccc" font-size="11">FromBoardActorChain</text>
+  </g>
+
+  <!-- ========== 底部状态栏 ========== -->
+  <path d="M10 786 L1210 786 L1210 800 Q1210 810 1200 810 L20 810 Q10 810 10 800 Z" fill="#0078d4"/>
+  <text x="26" y="802" fill="#fff" font-size="11">● 已连接 ws://127.0.0.1:17900</text>
+  <text x="258" y="802" fill="#fff" font-size="11">⟳ ping 12ms</text>
+  <text x="348" y="802" fill="#fff" font-size="11">↓ 326 帧 / ↑ 18 帧</text>
+  <text x="478" y="802" fill="#fff" font-size="11">实时 3 上下文 · 历史 6/50</text>
+  <text x="678" y="802" fill="#fff" font-size="11">内存 38 MB</text>
+  <text x="1140" y="802" fill="#fff" font-size="11">v0.1.0</text>
+</svg>
